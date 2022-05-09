@@ -4,16 +4,18 @@ import com.ani.spring.controller.CustomerController;
 import com.ani.spring.util.DateUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.AbstractEnvironment;
 
 import java.time.LocalDate;
 
-//@SpringBootApplication
-@Configuration
-@EnableAutoConfiguration // 👉 From where scanning needs to started
-@ComponentScan //
+@SpringBootApplication
+//@Configuration
+//@EnableAutoConfiguration // 👉 From where scanning needs to started
+//@ComponentScan //
 public class SpringIntroApplication {
 
 	private void normalDemo() {
@@ -28,6 +30,8 @@ public class SpringIntroApplication {
 	}
 
 	public static void main(String[] args) {
+		// java -Dspring.profiles.active=prod -jar spring-intro-0.0.1-SNAPSHOT.jar
+//		System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "dev");
 		ApplicationContext ctx = SpringApplication.run(SpringIntroApplication.class, args);
 
 //		Arrays.stream(

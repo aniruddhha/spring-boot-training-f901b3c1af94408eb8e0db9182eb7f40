@@ -1,8 +1,6 @@
 cust:
   age:
     msg: Age is
-    days: 90
+    days: 55
   sal:
-    mo: 100
-
-
+    mo: 15

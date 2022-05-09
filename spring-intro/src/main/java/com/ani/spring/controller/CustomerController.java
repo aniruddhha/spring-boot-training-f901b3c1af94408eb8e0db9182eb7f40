@@ -30,7 +30,7 @@ public class CustomerController {
 //    }
 
     @Autowired // ✅ setter injection
-    public void setUtil( @Qualifier("rev2") DateUtil util) {
+    public void setUtil(DateUtil util) {
         this.util = util;
     }
 
@@ -38,5 +38,6 @@ public class CustomerController {
         long age = util.diffFromToday(LocalDate.of(2000, 1, 1));
         System.out.println(ageMsg+age);
         System.out.println(env.getProperty("cust.age.msg")+" "+age);
+        System.out.println("Profile Is "+ util.getProfile());
     }
 }
