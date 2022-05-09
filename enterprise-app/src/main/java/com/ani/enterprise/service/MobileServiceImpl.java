@@ -17,7 +17,7 @@ public class MobileServiceImpl implements MobileService {
     private MobileRepository repository;
 
     @Override
-    public String createInvoice(MobileDto dto) {
+    public String createMobile(MobileDto dto) {
 
         Mobile domain = new Mobile(
                 dto.getId(),
@@ -29,5 +29,10 @@ public class MobileServiceImpl implements MobileService {
         repository.save(domain);
 
         return "success";
+    }
+
+    @Override
+    public void removeMobile(Long id) {
+        repository.delete(id);
     }
 }

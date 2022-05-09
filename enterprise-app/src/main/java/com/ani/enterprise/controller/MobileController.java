@@ -13,7 +13,7 @@ public class MobileController {
     @Autowired
     private MobileService service;
 
-    public String generateInvoice(MobileDto dto) {
-        return service.createInvoice(dto);
+    public String generateMobile(MobileDto dto) {
+        return service.createMobile(dto);
     }
 }

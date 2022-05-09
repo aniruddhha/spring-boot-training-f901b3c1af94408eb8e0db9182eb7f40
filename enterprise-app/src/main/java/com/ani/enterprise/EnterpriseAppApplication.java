@@ -15,7 +15,7 @@ public class EnterpriseAppApplication {
 
 		MobileDto dto = new MobileDto(1L, "99999999", "IN", true);
 
-		controller.generateInvoice(dto);
+		controller.generateMobile(dto);
 	}
 
 }

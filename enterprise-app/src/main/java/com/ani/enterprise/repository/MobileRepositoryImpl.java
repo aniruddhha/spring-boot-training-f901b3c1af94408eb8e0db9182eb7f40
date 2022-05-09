@@ -18,4 +18,10 @@ public class MobileRepositoryImpl implements MobileRepository {
         // mobile will be saved to database
         mobiles.add(mobile);
     }
+
+    @Override
+    public void delete(Long id) {
+        // TODO: Complete this Code
+        // TODO: From list Mobile needs to be removed
+    }
 }
