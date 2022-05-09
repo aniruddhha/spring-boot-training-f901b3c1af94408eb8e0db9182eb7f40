@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean(name = "rev1")
-    public DateUtil dateUtil() {
+    public DateUtil dateUtil1() {
         return new DateUtil();
     }
 

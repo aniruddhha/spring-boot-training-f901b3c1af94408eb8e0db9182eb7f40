@@ -1,0 +1,8 @@
+cust:
+  age:
+    msg: Age is
+    days: 90
+  sal:
+    mo: 100
+
+
