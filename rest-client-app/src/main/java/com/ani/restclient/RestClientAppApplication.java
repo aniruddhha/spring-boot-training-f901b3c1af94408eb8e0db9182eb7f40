@@ -12,7 +12,7 @@ public class RestClientAppApplication {
 		ApplicationContext ctx = SpringApplication.run(RestClientAppApplication.class, args);
 
 		DemoClient client = ctx.getBean(DemoClient.class);
-		client.showMobile();
+		client.showMobileV2();
 	}
 
 }
