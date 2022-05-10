@@ -2,7 +2,6 @@ package com.ani.enterprise.controller;
 
 import com.ani.enterprise.dto.AppRes;
 import com.ani.enterprise.dto.MobileDto;
-import com.ani.enterprise.exception.InvalidCountryException;
 import com.ani.enterprise.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,14 +21,9 @@ public class MobileController {
 
     @PostMapping   // POST: http://localhost:8989/mobile/
     public ResponseEntity<AppRes> addNewMobile(@RequestBody MobileDto dto) {
-//        try {
-            service.createMobile(dto);
-            AppRes res = new AppRes("success", "added new mobile");
-            return new ResponseEntity<>(res, HttpStatus.CREATED );
-//        }catch(InvalidCountryException e) {
-//            AppRes res = new AppRes("fail", e.getMessage());
-//            return ResponseEntity.badRequest().body(res);
-//        }
+        service.createMobile(dto);
+        AppRes res = new AppRes("success", "added new mobile");
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/xml", consumes = MediaType.APPLICATION_XML_VALUE)  // POST: http://localhost:8989/mobile/xml
@@ -39,10 +33,10 @@ public class MobileController {
 
         AppRes res = new AppRes("success", "added new mobile");
 
-        return new ResponseEntity<>(res, HttpStatus.CREATED );
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE) // GET: http://localhost:8989/mobile/
+    @GetMapping // GET: http://localhost:8989/mobile/
     public ResponseEntity<List<MobileDto>> showAll() {
         return ResponseEntity.ok(service.showAllMobiles());
     }
@@ -55,13 +49,8 @@ public class MobileController {
 
     @PutMapping // PUT: http://localhost:8989/mobile/
     public ResponseEntity<Object> updateMobile(@RequestBody MobileDto dto) {
-//        try {
-            MobileDto resDto = service.updateMobile(dto);
-            return new ResponseEntity<>(resDto, HttpStatus.CREATED );
-//        }catch(InvalidCountryException e) {
-//            AppRes res = new AppRes("fail", e.getMessage());
-//            return ResponseEntity.badRequest().body(res);
-//        }
+        MobileDto resDto = service.updateMobile(dto);
+        return new ResponseEntity<>(resDto, HttpStatus.CREATED);
     }
 
     // GET: http://localhost:8989/mobile/1
