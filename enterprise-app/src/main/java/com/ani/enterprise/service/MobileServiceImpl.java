@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 //@Component
 @Service // this will perform operations on data
@@ -34,5 +36,20 @@ public class MobileServiceImpl implements MobileService {
     @Override
     public void removeMobile(Long id) {
         repository.delete(id);
+    }
+
+    @Override
+    public List<MobileDto> showAllMobiles() {
+        return repository.findAll().stream()
+                .map(
+                        mobile ->  new MobileDto(
+                                mobile.getId(),
+                                mobile.getNumber(),
+                                mobile.getCountry(),
+                                mobile.getIsDualSim()
+                        )
+                ).collect(
+                        Collectors.toList()
+                );
     }
 }

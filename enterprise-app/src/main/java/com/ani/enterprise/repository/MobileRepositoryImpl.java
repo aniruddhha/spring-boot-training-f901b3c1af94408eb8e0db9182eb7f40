@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 //@Component
 @Repository // this will communicate with datasource
@@ -21,7 +22,11 @@ public class MobileRepositoryImpl implements MobileRepository {
 
     @Override
     public void delete(Long id) {
-        // TODO: Complete this Code
-        // TODO: From list Mobile needs to be removed
+        mobiles.removeIf( mobile -> Objects.equals(mobile.getId(), id));
+    }
+
+    @Override
+    public List<Mobile> findAll() {
+        return mobiles;
     }
 }

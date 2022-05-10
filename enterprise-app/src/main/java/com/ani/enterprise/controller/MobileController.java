@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 //@Component
 @Controller // this receives and sends back data to client
 public class MobileController {
@@ -16,4 +18,6 @@ public class MobileController {
     public String generateMobile(MobileDto dto) {
         return service.createMobile(dto);
     }
+
+    public List<MobileDto> showAll() { return service.showAllMobiles(); }
 }

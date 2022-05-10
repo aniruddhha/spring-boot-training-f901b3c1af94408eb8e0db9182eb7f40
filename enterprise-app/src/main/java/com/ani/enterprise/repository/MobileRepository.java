@@ -8,4 +8,6 @@ public interface MobileRepository {
     void save(Mobile mobile);
 
     void delete(Long id);
+
+    List<Mobile> findAll();
 }

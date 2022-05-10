@@ -13,9 +13,13 @@ public class EnterpriseAppApplication {
 		ApplicationContext ctx = SpringApplication.run(EnterpriseAppApplication.class, args);
 		MobileController controller = ctx.getBean(MobileController.class);
 
-		MobileDto dto = new MobileDto(1L, "99999999", "IN", true);
+		MobileDto dto1 = new MobileDto(1L, "99999999", "IN", true);
+		controller.generateMobile(dto1);
 
-		controller.generateMobile(dto);
+		MobileDto dto2 = new MobileDto(2L, "88888888", "RU", false);
+		controller.generateMobile(dto2);
+
+		controller.showAll().forEach(System.out::println);
 	}
 
 }
