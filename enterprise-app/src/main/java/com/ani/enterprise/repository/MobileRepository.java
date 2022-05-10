@@ -10,4 +10,6 @@ public interface MobileRepository {
     void delete(Long id);
 
     List<Mobile> findAll();
+
+    Mobile update(Mobile mobile);
 }

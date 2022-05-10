@@ -43,4 +43,22 @@ public class MobileController {
     public ResponseEntity<List<MobileDto>> showAll() {
         return ResponseEntity.ok(service.showAllMobiles());
     }
+
+    @DeleteMapping(value = "/{id}") // DELETE: http://localhost:8989/mobile/13
+    public ResponseEntity<AppRes> deleteMobile(@PathVariable Long id) {
+        service.removeMobile(id);
+        return ResponseEntity.ok(new AppRes("success", "deleted mobile successfully"));
+    }
+
+    @PutMapping // PUT: http://localhost:8989/mobile/
+    public ResponseEntity<MobileDto> updateMobile(@RequestBody MobileDto dto) {
+        MobileDto updated = service.updateMobile(dto);
+        return ResponseEntity.ok(updated);
+    }
+
+
+    // GET: http://localhost:8989/mobile/1
+    public ResponseEntity<MobileDto> mobileDetails(Long id) {
+        return null;
+    }
 }

@@ -29,4 +29,10 @@ public class MobileRepositoryImpl implements MobileRepository {
     public List<Mobile> findAll() {
         return mobiles;
     }
+
+    @Override
+    public Mobile update(Mobile mobile) {
+        int index = mobiles.indexOf(mobile);
+        return mobiles.set(index, mobile);
+    }
 }

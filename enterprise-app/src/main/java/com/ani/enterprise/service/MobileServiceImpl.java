@@ -52,4 +52,24 @@ public class MobileServiceImpl implements MobileService {
                         Collectors.toList()
                 );
     }
+
+    @Override
+    public MobileDto updateMobile(MobileDto dto) {
+
+        Mobile mobile = new Mobile(
+                dto.getId(),
+                dto.getNumber(),
+                dto.getCountry(),
+                dto.getIsDualSim()
+        );
+
+        Mobile updated = repository.update(mobile);
+
+        return new MobileDto(
+                updated.getId(),
+                updated.getNumber(),
+                updated.getCountry(),
+                updated.getIsDualSim()
+        );
+    }
 }
