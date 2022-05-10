@@ -9,6 +9,5 @@ public interface MobileService {
 
     void removeMobile(Long id);
 
-    //TODO: Complete the architecture along with logic
     List<MobileDto> showAllMobiles();
 }
