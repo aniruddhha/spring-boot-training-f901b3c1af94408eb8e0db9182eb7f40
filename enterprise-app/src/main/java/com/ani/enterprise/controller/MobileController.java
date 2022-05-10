@@ -5,6 +5,7 @@ import com.ani.enterprise.dto.MobileDto;
 import com.ani.enterprise.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,17 @@ public class MobileController {
         return new ResponseEntity<>(res, HttpStatus.CREATED );
     }
 
-    @GetMapping // GET: http://localhost:8989/mobile/
+    @PostMapping(value = "/xml", consumes = MediaType.APPLICATION_XML_VALUE)  // POST: http://localhost:8989/mobile/xml
+    public ResponseEntity<AppRes> addNewMobileXml(@RequestBody MobileDto dto) {
+
+        service.createMobile(dto);
+
+        AppRes res = new AppRes("success", "added new mobile");
+
+        return new ResponseEntity<>(res, HttpStatus.CREATED );
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_XML_VALUE) // GET: http://localhost:8989/mobile/
     public ResponseEntity<List<MobileDto>> showAll() {
         return ResponseEntity.ok(service.showAllMobiles());
     }
