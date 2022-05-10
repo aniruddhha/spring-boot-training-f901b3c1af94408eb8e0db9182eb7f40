@@ -1,25 +1,13 @@
 package com.ani.enterprise;
 
-import com.ani.enterprise.controller.MobileController;
-import com.ani.enterprise.dto.MobileDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class EnterpriseAppApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(EnterpriseAppApplication.class, args);
-		MobileController controller = ctx.getBean(MobileController.class);
-
-		MobileDto dto1 = new MobileDto(1L, "99999999", "IN", true);
-		controller.generateMobile(dto1);
-
-		MobileDto dto2 = new MobileDto(2L, "88888888", "RU", false);
-		controller.generateMobile(dto2);
-
-		controller.showAll().forEach(System.out::println);
+		SpringApplication.run(EnterpriseAppApplication.class, args);
 	}
 
 }
