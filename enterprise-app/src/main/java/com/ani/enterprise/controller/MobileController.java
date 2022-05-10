@@ -5,11 +5,14 @@ import com.ani.enterprise.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 //@Component
-@Controller // this receives and sends back data to client
+@RequestMapping("/mobile")
+@RestController // this receives and sends back data to client
 public class MobileController {
 
     @Autowired
