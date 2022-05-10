@@ -2,6 +2,7 @@ package com.ani.enterprise.service;
 
 import com.ani.enterprise.domain.Mobile;
 import com.ani.enterprise.dto.MobileDto;
+import com.ani.enterprise.exception.InvalidCountryException;
 import com.ani.enterprise.repository.MobileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,11 +16,16 @@ import java.util.stream.Collectors;
 @Service // this will perform operations on data
 public class MobileServiceImpl implements MobileService {
 
+    private static final List<String> countries = List.of("IN", "US", "UK");
     @Autowired
     private MobileRepository repository;
 
     @Override
     public String createMobile(MobileDto dto) {
+
+        if(!countries.contains(dto.getCountry())) {
+            throw new InvalidCountryException(dto.getCountry() + " Not Allowed For Production ");
+        }
 
         Mobile domain = new Mobile(
                 dto.getId(),
@@ -55,6 +61,10 @@ public class MobileServiceImpl implements MobileService {
 
     @Override
     public MobileDto updateMobile(MobileDto dto) {
+
+        if(!countries.contains(dto.getCountry())) {
+            throw new InvalidCountryException(dto.getCountry() + " Not Allowed For Production ");
+        }
 
         Mobile mobile = new Mobile(
                 dto.getId(),

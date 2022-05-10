@@ -2,6 +2,7 @@ package com.ani.enterprise.controller;
 
 import com.ani.enterprise.dto.AppRes;
 import com.ani.enterprise.dto.MobileDto;
+import com.ani.enterprise.exception.InvalidCountryException;
 import com.ani.enterprise.service.MobileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,12 +22,14 @@ public class MobileController {
 
     @PostMapping   // POST: http://localhost:8989/mobile/
     public ResponseEntity<AppRes> addNewMobile(@RequestBody MobileDto dto) {
-
-        service.createMobile(dto);
-
-        AppRes res = new AppRes("success", "added new mobile");
-
-        return new ResponseEntity<>(res, HttpStatus.CREATED );
+        try {
+            service.createMobile(dto);
+            AppRes res = new AppRes("success", "added new mobile");
+            return new ResponseEntity<>(res, HttpStatus.CREATED );
+        }catch(InvalidCountryException e) {
+            AppRes res = new AppRes("fail", e.getMessage());
+            return ResponseEntity.badRequest().body(res);
+        }
     }
 
     @PostMapping(value = "/xml", consumes = MediaType.APPLICATION_XML_VALUE)  // POST: http://localhost:8989/mobile/xml
@@ -51,11 +54,15 @@ public class MobileController {
     }
 
     @PutMapping // PUT: http://localhost:8989/mobile/
-    public ResponseEntity<MobileDto> updateMobile(@RequestBody MobileDto dto) {
-        MobileDto updated = service.updateMobile(dto);
-        return ResponseEntity.ok(updated);
+    public ResponseEntity<Object> updateMobile(@RequestBody MobileDto dto) {
+        try {
+            MobileDto resDto = service.updateMobile(dto);
+            return new ResponseEntity<>(resDto, HttpStatus.CREATED );
+        }catch(InvalidCountryException e) {
+            AppRes res = new AppRes("fail", e.getMessage());
+            return ResponseEntity.badRequest().body(res);
+        }
     }
-
 
     // GET: http://localhost:8989/mobile/1
     public ResponseEntity<MobileDto> mobileDetails(Long id) {
