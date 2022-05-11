@@ -6,20 +6,20 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.time.LocalDate;
-import java.util.List;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class Employee {
+public class Mobile {
     @Id
     private Long id;
-    private String name;
-    private LocalDate dob;
+    private String number;
+    private String imei;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Mobile> mobiles;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 }
