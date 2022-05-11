@@ -6,21 +6,21 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class Employee {
+public class Car {
+
     @Id
     private Long id;
-    private String name;
-    private LocalDate dob;
+    private String make;
+    private LocalDate mfg;
 
-    @OneToMany(mappedBy = "employee")
-//    @OneToMany
-    private List<Mobile> mobiles;
+    @OneToOne(mappedBy = "car")
+    private RegCert regCert;
 }
+
