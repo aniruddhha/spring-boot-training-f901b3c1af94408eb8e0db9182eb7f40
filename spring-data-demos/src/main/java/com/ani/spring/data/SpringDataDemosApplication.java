@@ -11,11 +11,10 @@ import org.springframework.context.ApplicationContext;
 import java.time.LocalDate;
 import java.util.List;
 
+// Day 3: Home Work : Typing All codes related to association mapping and query creation
+
 @SpringBootApplication
 public class SpringDataDemosApplication {
-
-
-
 	public static void derivedMethods(ApplicationContext ctx) {
 		EmployeeRepository repository = ctx.getBean(EmployeeRepository.class);
 
