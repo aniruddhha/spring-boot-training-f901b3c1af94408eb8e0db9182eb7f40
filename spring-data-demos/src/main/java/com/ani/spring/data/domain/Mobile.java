@@ -1,8 +1,6 @@
 package com.ani.spring.data.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,7 +9,8 @@ import javax.persistence.ManyToOne;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 public class Mobile {
     @Id
@@ -22,4 +21,13 @@ public class Mobile {
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    @Override
+    public String toString() {
+        return "Mobile{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", imei='" + imei + '\'' +
+                '}';
+    }
 }

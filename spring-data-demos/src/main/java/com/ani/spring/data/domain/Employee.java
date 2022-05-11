@@ -1,17 +1,15 @@
 package com.ani.spring.data.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Setter
+@Getter
 @Entity
 public class Employee {
     @Id
@@ -25,5 +23,14 @@ public class Employee {
             fetch = FetchType.LAZY
     )
 //    @OneToMany
-    private List<Mobile> mobiles = new ArrayList<>();
+    private List<Mobile> mobiles;
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dob=" + dob +
+                '}';
+    }
 }
