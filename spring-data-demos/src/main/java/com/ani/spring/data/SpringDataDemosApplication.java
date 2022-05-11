@@ -40,7 +40,23 @@ public class SpringDataDemosApplication {
 		repository.findAll().forEach(System.out::println);
 	}
 
+	public static void derivedMethods(ApplicationContext ctx) {
+		EmployeeRepository repository = ctx.getBean(EmployeeRepository.class);
+
+		repository.findByNameLike("a%");
+
+		repository.findByDobBetween(
+				LocalDate.of(1900,1,1),
+				LocalDate.now()
+		);
+
+		repository.findAllIds();
+
+		repository.findByNameOrDob("abc", null);
+	}
+
 	public static void main(String[] args) {
-		SpringApplication.run(SpringDataDemosApplication.class, args);
+		ApplicationContext ctx = SpringApplication.run(SpringDataDemosApplication.class, args);
+		derivedMethods(ctx);
 	}
 }
