@@ -1,22 +1,30 @@
 package com.ani.spring.testing.controller;
 
 import com.ani.spring.testing.dto.FileDto;
+import com.ani.spring.testing.service.FileService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+
+@WebMvcTest(FileController.class) // does not loads app context
+//@SpringBootTest // this loads app context
+//@AutoConfigureMockMvc
 public class FileControllerTests {
 
     @Autowired
     private MockMvc mvc;
+
+    @MockBean
+    private FileService service;
 
     @DisplayName("Testing File Save Endpoint")
     @Test
