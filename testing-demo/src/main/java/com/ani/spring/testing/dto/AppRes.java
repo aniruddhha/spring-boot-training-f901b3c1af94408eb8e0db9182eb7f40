@@ -2,6 +2,7 @@ package com.ani.spring.testing.dto;
 
 import lombok.*;
 
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
