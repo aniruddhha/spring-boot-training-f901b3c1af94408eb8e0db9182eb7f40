@@ -15,12 +15,22 @@ public class MongoDemoApplication {
 
 		SocialPostRepository repository = ctx.getBean(SocialPostRepository.class);
 
-		SocialPost post = new SocialPost();
-		post.setId("abc");
-		post.setMsg("Hey hi");
-		post.setTm(LocalDate.now());
+		SocialPost post1 = new SocialPost();
+		post1.setId("lmn");
+		post1.setMsg("Hey hi");
+		post1.setTm(LocalDate.now());
+//		repository.insert(post1);
 
-		repository.save(post);
+		SocialPost post2 = new SocialPost();
+		post2.setId("uuu");
+		post2.setMsg("Hey hi");
+		post2.setTm(LocalDate.now());
+//		repository.insert(post2);
+
+		repository.findAll().forEach(System.out::println);
+
+		repository.deleteById("lmn");
+		repository.findAll().forEach(System.out::println);
 
 	}
 	public static void main(String[] args) {
