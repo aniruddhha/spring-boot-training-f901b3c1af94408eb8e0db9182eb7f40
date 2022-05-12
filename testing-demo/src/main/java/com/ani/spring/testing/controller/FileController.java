@@ -14,7 +14,7 @@ public class FileController {
 
     private FileService service;
 
-    @PostMapping
+    @PostMapping // POST: http://localhost:8989/file/
     public ResponseEntity<AppRes> saveFile(@RequestBody FileDto file) {
         return ResponseEntity.ok(AppRes.builder().build());
     }
