@@ -2,6 +2,7 @@ package com.ani.spring.testing.service;
 
 import com.ani.spring.testing.domain.FileUpload;
 import com.ani.spring.testing.dto.FileDto;
+import com.ani.spring.testing.exception.TooLargeFileException;
 import com.ani.spring.testing.repository.FileRepository;
 import com.ani.spring.testing.util.DtoEntityConverter;
 import org.junit.jupiter.api.Assertions;
@@ -69,5 +70,26 @@ public class FileServiceTests {
                 repository,
                 Mockito.times(8)
         ).save(entity);
+    }
+
+    @Test
+    public void testExceptionWorking() {
+
+        Assertions.assertThrows(TooLargeFileException.class, () -> {
+            FileDto dto = new FileDto();
+            dto.setId(1L);
+            dto.setName("abc");
+            dto.setSize(100L);
+
+//            FileUpload entity = DtoEntityConverter.toEntity(dto);
+
+//            BDDMockito.given(
+//                    repository.save(entity)
+//            ).willReturn(
+//                    entity
+//            );
+
+            service.saveFile(dto);
+        });
     }
 }
