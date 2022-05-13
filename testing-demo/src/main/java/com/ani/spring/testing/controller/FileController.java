@@ -26,4 +26,9 @@ public class FileController {
 
         return ResponseEntity.ok(res);
     }
+
+    @GetMapping
+    public String hi() {
+        return "hi";
+    }
 }
