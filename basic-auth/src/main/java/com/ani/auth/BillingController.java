@@ -4,12 +4,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping(value = "/cart")
+@RequestMapping(value = "/billing")
 @RestController
-public class CartController {
+public class BillingController {
 
     @GetMapping
-    public String item() {
-        return "its cart item";
+    public String bill() {
+        return "its billing";
     }
 }
